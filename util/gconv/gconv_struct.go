@@ -46,16 +46,6 @@ func StructTag(params interface{}, pointer interface{}, priorityTag string) (err
 	return doStruct(params, pointer, nil, priorityTag)
 }
 
-// StructDeep do Struct function recursively.
-// Deprecated, use Struct instead.
-func StructDeep(params interface{}, pointer interface{}, mapping ...map[string]string) error {
-	var keyToAttributeNameMapping map[string]string
-	if len(mapping) > 0 {
-		keyToAttributeNameMapping = mapping[0]
-	}
-	return doStruct(params, pointer, keyToAttributeNameMapping, "")
-}
-
 // doStruct is the core internal converting function for any data to struct.
 func doStruct(params interface{}, pointer interface{}, mapping map[string]string, priorityTag string) (err error) {
 	if params == nil {
